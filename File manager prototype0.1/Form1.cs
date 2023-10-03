@@ -14,7 +14,7 @@ namespace File_manager_prototype0._1
 {
     public partial class Form1 : Form
     {
-
+        
         public Form1()
         {
             InitializeComponent();
@@ -22,23 +22,18 @@ namespace File_manager_prototype0._1
             btnReadFile.Enabled = false;  
             btnShow.Enabled = false;
 
-            GetInputDrives();
         }
 
-        private void GetInputDrives()
-        {
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                comboBox1.Items.Add(drive.Name);
-            }
-        }
+
         private void GetInput()
         {
             BoxFolderManager.Items.Clear();
+            HandlerControl objectHandlerControl = new HandlerControl();
 
-            string dynamicPath = HandlerControl.MethodInputPath(EditingPath.Text);
-            DirectoryInfo[] directories = HandlerControl.MethodSearchDirectories(dynamicPath);
-            FileInfo[] files = HandlerControl.MethodSearchFiles(dynamicPath);
+
+            string dynamicPath = objectHandlerControl.MethodInputPath(EditingPath.Text);
+            DirectoryInfo[] directories = objectHandlerControl.MethodSearchDirectories(dynamicPath);
+            FileInfo[] files = objectHandlerControl.MethodSearchFiles(dynamicPath);
 
             foreach (var item in directories)
             {
@@ -59,8 +54,10 @@ namespace File_manager_prototype0._1
         }
         private void RemovePath()
         {
-            char[] chars = HandlerControl_ReadDirectory.MethodReadDirectory(EditingPath.Text);
-            EditingPath.Text = HandlerControl_ReadDirectory.MethodRemovePath(chars);
+            HandlerControl_ReadDirectory objectHandlerControl_readDirectory = new HandlerControl_ReadDirectory();
+
+            char[] chars = objectHandlerControl_readDirectory.MethodReadDirectory(EditingPath.Text);
+            EditingPath.Text = objectHandlerControl_readDirectory.MethodRemovePath(chars);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -93,28 +90,30 @@ namespace File_manager_prototype0._1
 
             EditingPath.Text += BoxFolderManager.Text + @"\";
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            EditingPath.Text = comboBox1.Text;
-        }
+       
 
         private void btnReturnToFolder_Click(object sender, EventArgs e)
         {
-            char[] chars = HandlerControl_ReadDirectory.MethodReadDirectory(EditingPath.Text);
-            EditingPath.Text = HandlerControl_ReadDirectory.MethodRemovePath(chars);
-
+            RemovePath();
             GetInput();
-        }
-        public class UnitForm
-        {
         }
 
         private void btnRemovePartOfPath_Click(object sender, EventArgs e)
         {
-            char[] chars = HandlerControl_ReadDirectory.MethodReadDirectory(EditingPath.Text);
-            EditingPath.Text = HandlerControl_ReadDirectory.MethodRemovePath(chars);
+            RemovePath();
         }
 
+
+        //Локига бокса дисков-----------------------------------
+        private void Form1_LoadInBox(object sender, EventArgs e)
+        {
+            LogicControl logicAllControl = new LogicControl();
+            List<string> listDrives = logicAllControl.GetDrivesBox();
+            foreach (string drive in listDrives) { drivesBox.Items.Add(drive); }
+        }
+        private void drivesBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EditingPath.Text = drivesBox.Text;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace File_manager_prototype0._1
         public static DirectoryInfo[] dynamicDirectories;
 
 
-        public static string MethodInputPath(string path)
+        public string MethodInputPath(string path)
         {
             if (path != null)
             {
@@ -23,7 +23,7 @@ namespace File_manager_prototype0._1
             return path;
         }
 
-        public static DirectoryInfo[] MethodSearchDirectories(string path)
+        public DirectoryInfo[] MethodSearchDirectories(string path)
         {
             if (Directory.Exists(path))
             {
@@ -37,7 +37,7 @@ namespace File_manager_prototype0._1
             }
             return null;
         }
-        public static FileInfo[] MethodSearchFiles(string path)
+        public FileInfo[] MethodSearchFiles(string path)
         {
             if (Directory.Exists(path))
             {
@@ -54,8 +54,7 @@ namespace File_manager_prototype0._1
     }
     public partial class HandlerControl_ReadDirectory : HandlerControl
     {
-        //public static char[] unitFromCharsInFolder;
-        public static char[] MethodReadDirectory(string path)
+        public char[] MethodReadDirectory(string path)
         {
             char[] unitFromCharsInFolder = new char[path.Length];
             int cout = 0;
@@ -67,7 +66,7 @@ namespace File_manager_prototype0._1
             return unitFromCharsInFolder;
         }
 
-        public static string MethodRemovePath(char[] unitChars)
+        public string MethodRemovePath(char[] unitChars)
         {
             string text = "";
             int coutSlash = 0;
