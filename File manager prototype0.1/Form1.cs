@@ -57,6 +57,11 @@ namespace File_manager_prototype0._1
                 }
             }
         }
+        private void RemovePath()
+        {
+            char[] chars = HandlerControl_ReadDirectory.MethodReadDirectory(EditingPath.Text);
+            EditingPath.Text = HandlerControl_ReadDirectory.MethodRemovePath(chars);
+        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
