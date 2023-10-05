@@ -28,161 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.EditingPath = new System.Windows.Forms.TextBox();
-            this.BoxFolderManager = new System.Windows.Forms.ListBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnReturnToFolder = new System.Windows.Forms.Button();
-            this.btnRemovePartOfPath = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnReadFile = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.drivesBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pathBox1 = new System.Windows.Forms.TextBox();
+            this.filesBox = new System.Windows.Forms.ListBox();
+            this.btnSearchbyPath = new System.Windows.Forms.Button();
+            this.btnGoBack = new System.Windows.Forms.Button();
+            this.btnPathBack = new System.Windows.Forms.Button();
+            this.cmbDrivesListBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // EditingPath
+            // pathBox1
             // 
-            this.EditingPath.Location = new System.Drawing.Point(16, 34);
-            this.EditingPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.EditingPath.Multiline = true;
-            this.EditingPath.Name = "EditingPath";
-            this.EditingPath.Size = new System.Drawing.Size(496, 24);
-            this.EditingPath.TabIndex = 0;
+            this.pathBox1.Location = new System.Drawing.Point(16, 34);
+            this.pathBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pathBox1.Multiline = true;
+            this.pathBox1.Name = "pathBox1";
+            this.pathBox1.Size = new System.Drawing.Size(496, 24);
+            this.pathBox1.TabIndex = 0;
             // 
-            // BoxFolderManager
+            // filesBox
             // 
-            this.BoxFolderManager.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BoxFolderManager.FormattingEnabled = true;
-            this.BoxFolderManager.ItemHeight = 21;
-            this.BoxFolderManager.Location = new System.Drawing.Point(16, 140);
-            this.BoxFolderManager.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BoxFolderManager.Name = "BoxFolderManager";
-            this.BoxFolderManager.Size = new System.Drawing.Size(312, 172);
-            this.BoxFolderManager.TabIndex = 1;
-            this.BoxFolderManager.SelectedIndexChanged += new System.EventHandler(this.BoxFolderManager_SelectedIndexChanged);
+            this.filesBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filesBox.FormattingEnabled = true;
+            this.filesBox.ItemHeight = 21;
+            this.filesBox.Location = new System.Drawing.Point(16, 140);
+            this.filesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.filesBox.Name = "filesBox";
+            this.filesBox.Size = new System.Drawing.Size(312, 172);
+            this.filesBox.TabIndex = 1;
+            this.filesBox.SelectedIndexChanged += new System.EventHandler(this.filesBox_SelectedIndexChanged);
             // 
-            // btnSearch
+            // btnSearchbyPath
             // 
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(332, 6);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(93, 27);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearchbyPath.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchbyPath.Location = new System.Drawing.Point(16, 66);
+            this.btnSearchbyPath.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearchbyPath.Name = "btnSearchbyPath";
+            this.btnSearchbyPath.Size = new System.Drawing.Size(93, 27);
+            this.btnSearchbyPath.TabIndex = 2;
+            this.btnSearchbyPath.Text = "Search";
+            this.btnSearchbyPath.UseVisualStyleBackColor = true;
+            this.btnSearchbyPath.Click += new System.EventHandler(this.btnSearchbyPath_Click);
             // 
-            // btnReturnToFolder
+            // btnGoBack
             // 
-            this.btnReturnToFolder.Location = new System.Drawing.Point(477, 6);
-            this.btnReturnToFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnReturnToFolder.Name = "btnReturnToFolder";
-            this.btnReturnToFolder.Size = new System.Drawing.Size(36, 27);
-            this.btnReturnToFolder.TabIndex = 3;
-            this.btnReturnToFolder.Text = "<<";
-            this.btnReturnToFolder.UseVisualStyleBackColor = true;
-            this.btnReturnToFolder.Click += new System.EventHandler(this.btnReturnToFolder_Click);
+            this.btnGoBack.Location = new System.Drawing.Point(477, 66);
+            this.btnGoBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGoBack.Name = "btnGoBack";
+            this.btnGoBack.Size = new System.Drawing.Size(36, 27);
+            this.btnGoBack.TabIndex = 3;
+            this.btnGoBack.Text = "<<";
+            this.btnGoBack.UseVisualStyleBackColor = true;
+            this.btnGoBack.Click += new System.EventHandler(this.btnGoBack_Click);
             // 
-            // btnRemovePartOfPath
+            // btnPathBack
             // 
-            this.btnRemovePartOfPath.Location = new System.Drawing.Point(433, 5);
-            this.btnRemovePartOfPath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRemovePartOfPath.Name = "btnRemovePartOfPath";
-            this.btnRemovePartOfPath.Size = new System.Drawing.Size(36, 28);
-            this.btnRemovePartOfPath.TabIndex = 5;
-            this.btnRemovePartOfPath.Text = "<";
-            this.btnRemovePartOfPath.UseVisualStyleBackColor = true;
-            this.btnRemovePartOfPath.Click += new System.EventHandler(this.btnRemovePartOfPath_Click);
+            this.btnPathBack.Location = new System.Drawing.Point(433, 65);
+            this.btnPathBack.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPathBack.Name = "btnPathBack";
+            this.btnPathBack.Size = new System.Drawing.Size(36, 28);
+            this.btnPathBack.TabIndex = 5;
+            this.btnPathBack.Text = "<";
+            this.btnPathBack.UseVisualStyleBackColor = true;
+            this.btnPathBack.Click += new System.EventHandler(this.btnPathBack_Click);
             // 
-            // label1
+            // cmbDrivesListBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 22);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Path";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 117);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 22);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Found files";
-            // 
-            // btnReadFile
-            // 
-            this.btnReadFile.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReadFile.Location = new System.Drawing.Point(337, 252);
-            this.btnReadFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnReadFile.Name = "btnReadFile";
-            this.btnReadFile.Size = new System.Drawing.Size(100, 28);
-            this.btnReadFile.TabIndex = 8;
-            this.btnReadFile.Text = "Read file";
-            this.btnReadFile.UseVisualStyleBackColor = true;
-            // 
-            // btnShow
-            // 
-            this.btnShow.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShow.Location = new System.Drawing.Point(337, 217);
-            this.btnShow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(100, 28);
-            this.btnShow.TabIndex = 9;
-            this.btnShow.Text = "Show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // drivesBox
-            // 
-            this.drivesBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drivesBox.FormattingEnabled = true;
-            this.drivesBox.Location = new System.Drawing.Point(16, 66);
-            this.drivesBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.drivesBox.Name = "drivesBox";
-            this.drivesBox.Size = new System.Drawing.Size(79, 26);
-            this.drivesBox.TabIndex = 10;
-            this.drivesBox.SelectedIndexChanged += new System.EventHandler(this.drivesBox_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(104, 74);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 22);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Drives";
+            this.cmbDrivesListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDrivesListBox.FormattingEnabled = true;
+            this.cmbDrivesListBox.Location = new System.Drawing.Point(16, 0);
+            this.cmbDrivesListBox.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbDrivesListBox.Name = "cmbDrivesListBox";
+            this.cmbDrivesListBox.Size = new System.Drawing.Size(57, 26);
+            this.cmbDrivesListBox.TabIndex = 10;
+            this.cmbDrivesListBox.SelectedIndexChanged += new System.EventHandler(this.cmbDrivesListBox_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 325);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.drivesBox);
-            this.Controls.Add(this.btnShow);
-            this.Controls.Add(this.btnReadFile);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnRemovePartOfPath);
-            this.Controls.Add(this.btnReturnToFolder);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.BoxFolderManager);
-            this.Controls.Add(this.EditingPath);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.cmbDrivesListBox);
+            this.Controls.Add(this.btnPathBack);
+            this.Controls.Add(this.btnGoBack);
+            this.Controls.Add(this.btnSearchbyPath);
+            this.Controls.Add(this.filesBox);
+            this.Controls.Add(this.pathBox1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_LoadInBox);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,17 +124,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox EditingPath;
-        private System.Windows.Forms.ListBox BoxFolderManager;
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnReturnToFolder;
-        private System.Windows.Forms.Button btnRemovePartOfPath;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnReadFile;
-        private System.Windows.Forms.Button btnShow;
-        private System.Windows.Forms.ComboBox drivesBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox pathBox1;
+        private System.Windows.Forms.ListBox filesBox;
+        private System.Windows.Forms.Button btnSearchbyPath;
+        private System.Windows.Forms.Button btnGoBack;
+        private System.Windows.Forms.Button btnPathBack;
+        private System.Windows.Forms.ComboBox cmbDrivesListBox;
     }
 }
 

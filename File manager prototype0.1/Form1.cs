@@ -14,106 +14,69 @@ namespace File_manager_prototype0._1
 {
     public partial class Form1 : Form
     {
-        
+        CompositeLogicControls logicControls = new CompositeLogicControls();
+
         public Form1()
         {
             InitializeComponent();
 
-            btnReadFile.Enabled = false;  
-            btnShow.Enabled = false;
-
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            List<string> listDrivesName = logicControls.AddDrivesInLoadForm();
+            foreach (string name in listDrivesName) { cmbDrivesListBox.Items.Add(name); }
         }
 
-
-        private void GetInput()
+        private void btnSearchbyPath_Click(object sender, EventArgs e)
         {
-            BoxFolderManager.Items.Clear();
-            HandlerControl objectHandlerControl = new HandlerControl();
+            filesBox.Items.Clear();
+            FileInfo[] files;
+            List<string> listDirectories = logicControls.OutputDirectories(pathBox1.Text, out files);
+            foreach (string dir in listDirectories) { filesBox.Items.Add(dir); }
 
+            logicControls.OutputDirectories(pathBox1.Text, out files);
 
-            string dynamicPath = objectHandlerControl.MethodInputPath(EditingPath.Text);
-            DirectoryInfo[] directories = objectHandlerControl.MethodSearchDirectories(dynamicPath);
-            FileInfo[] files = objectHandlerControl.MethodSearchFiles(dynamicPath);
-
-            foreach (var item in directories)
-            {
-                if ((item.Attributes & FileAttributes.Hidden) == 0)
-                {
-                    BoxFolderManager.Items.Add(item);
-                   
-                }
-            }
-            foreach (var file in files)
-            {
-                if ((file.Attributes & FileAttributes.Hidden) == 0)
-                {
-                    string fileInFolder = file.Name + "." + file.Attributes;
-                    BoxFolderManager.Items.Add(file);
-                }
-            }
-        }
-        private void RemovePath()
-        {
-            HandlerControl_ReadDirectory objectHandlerControl_readDirectory = new HandlerControl_ReadDirectory();
-
-            char[] chars = objectHandlerControl_readDirectory.MethodReadDirectory(EditingPath.Text);
-            EditingPath.Text = objectHandlerControl_readDirectory.MethodRemovePath(chars);
+            foreach (var file in files) { filesBox.Items.Add(file); }
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnPathBack_Click(object sender, EventArgs e)
         {
-            GetInput();
-        }
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            Process.Start(new ProcessStartInfo { FileName = "explorer", Arguments = $"/n /select, {EditingPath.Text}" });
+            pathBox1.Text = logicControls.PathBack(pathBox1.Text);
         }
 
-        private void BoxFolderManager_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnGoBack_Click(object sender, EventArgs e)
         {
-            btnReadFile.Enabled = false;
+            pathBox1.Text = logicControls.PathBack(pathBox1.Text);
 
-            var file = BoxFolderManager.SelectedItem;
+            filesBox.Items.Clear();
+            FileInfo[] files;
+            List<string> listDirectories = logicControls.OutputDirectories(pathBox1.Text, out files);
+            foreach (string dir in listDirectories) { filesBox.Items.Add(dir); }
+
+
+            foreach (var file in files) { filesBox.Items.Add(file); }
+        }
+
+        private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var file = filesBox.SelectedItem;
             if (file is FileInfo)
             {
-                btnShow.Enabled = true;
-
-                string fileAttribute = BoxFolderManager.Text;
-                if (fileAttribute.Contains(".txt"))
-                {
-                    btnReadFile.Enabled = true;
-                    return;
-                }
                 return;
             }
-            btnShow.Enabled = true;
+            pathBox1.Text = logicControls.AddToPath(pathBox1.Text, filesBox.SelectedItem.ToString());
 
-            EditingPath.Text += BoxFolderManager.Text + @"\";
-        }
-       
-
-        private void btnReturnToFolder_Click(object sender, EventArgs e)
-        {
-            RemovePath();
-            GetInput();
         }
 
-        private void btnRemovePartOfPath_Click(object sender, EventArgs e)
+        private void cmbDrivesListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RemovePath();
+            pathBox1.Text = cmbDrivesListBox.Text;
+
         }
 
+        private void filesBox_DoubleClick(object sender, EventArgs e)
+        {
 
-        //Локига бокса дисков-----------------------------------
-        private void Form1_LoadInBox(object sender, EventArgs e)
-        {
-            LogicControl logicAllControl = new LogicControl();
-            List<string> listDrives = logicAllControl.GetDrivesBox();
-            foreach (string drive in listDrives) { drivesBox.Items.Add(drive); }
-        }
-        private void drivesBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            EditingPath.Text = drivesBox.Text;
         }
     }
 }
