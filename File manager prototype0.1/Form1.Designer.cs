@@ -38,7 +38,7 @@
             // 
             // pathBox1
             // 
-            this.pathBox1.Location = new System.Drawing.Point(16, 34);
+            this.pathBox1.Location = new System.Drawing.Point(13, 49);
             this.pathBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pathBox1.Multiline = true;
             this.pathBox1.Name = "pathBox1";
@@ -50,17 +50,18 @@
             this.filesBox.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filesBox.FormattingEnabled = true;
             this.filesBox.ItemHeight = 21;
-            this.filesBox.Location = new System.Drawing.Point(16, 140);
+            this.filesBox.Location = new System.Drawing.Point(13, 165);
             this.filesBox.Margin = new System.Windows.Forms.Padding(4);
             this.filesBox.Name = "filesBox";
             this.filesBox.Size = new System.Drawing.Size(312, 172);
             this.filesBox.TabIndex = 1;
             this.filesBox.SelectedIndexChanged += new System.EventHandler(this.filesBox_SelectedIndexChanged);
+            this.filesBox.DoubleClick += new System.EventHandler(this.filesBox_DoubleClick);
             // 
             // btnSearchbyPath
             // 
             this.btnSearchbyPath.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchbyPath.Location = new System.Drawing.Point(16, 66);
+            this.btnSearchbyPath.Location = new System.Drawing.Point(16, 81);
             this.btnSearchbyPath.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchbyPath.Name = "btnSearchbyPath";
             this.btnSearchbyPath.Size = new System.Drawing.Size(93, 27);
@@ -71,7 +72,7 @@
             // 
             // btnGoBack
             // 
-            this.btnGoBack.Location = new System.Drawing.Point(477, 66);
+            this.btnGoBack.Location = new System.Drawing.Point(468, 80);
             this.btnGoBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnGoBack.Name = "btnGoBack";
             this.btnGoBack.Size = new System.Drawing.Size(36, 27);
@@ -82,7 +83,7 @@
             // 
             // btnPathBack
             // 
-            this.btnPathBack.Location = new System.Drawing.Point(433, 65);
+            this.btnPathBack.Location = new System.Drawing.Point(424, 80);
             this.btnPathBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnPathBack.Name = "btnPathBack";
             this.btnPathBack.Size = new System.Drawing.Size(36, 28);
@@ -95,7 +96,7 @@
             // 
             this.cmbDrivesListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDrivesListBox.FormattingEnabled = true;
-            this.cmbDrivesListBox.Location = new System.Drawing.Point(16, 0);
+            this.cmbDrivesListBox.Location = new System.Drawing.Point(13, 13);
             this.cmbDrivesListBox.Margin = new System.Windows.Forms.Padding(4);
             this.cmbDrivesListBox.Name = "cmbDrivesListBox";
             this.cmbDrivesListBox.Size = new System.Drawing.Size(57, 26);
@@ -106,7 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 325);
+            this.ClientSize = new System.Drawing.Size(517, 350);
             this.Controls.Add(this.cmbDrivesListBox);
             this.Controls.Add(this.btnPathBack);
             this.Controls.Add(this.btnGoBack);

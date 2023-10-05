@@ -15,6 +15,7 @@ namespace File_manager_prototype0._1
     public partial class Form1 : Form
     {
         CompositeLogicControls logicControls = new CompositeLogicControls();
+        HandlerControl handlerControl = new HandlerControl();
 
         public Form1()
         {
@@ -29,14 +30,7 @@ namespace File_manager_prototype0._1
 
         private void btnSearchbyPath_Click(object sender, EventArgs e)
         {
-            filesBox.Items.Clear();
-            FileInfo[] files;
-            List<string> listDirectories = logicControls.OutputDirectories(pathBox1.Text, out files);
-            foreach (string dir in listDirectories) { filesBox.Items.Add(dir); }
-
-            logicControls.OutputDirectories(pathBox1.Text, out files);
-
-            foreach (var file in files) { filesBox.Items.Add(file); }
+            filesBox = handlerControl.SearchbyPath(filesBox, pathBox1);
         }
 
         private void btnPathBack_Click(object sender, EventArgs e)
@@ -46,15 +40,7 @@ namespace File_manager_prototype0._1
 
         private void btnGoBack_Click(object sender, EventArgs e)
         {
-            pathBox1.Text = logicControls.PathBack(pathBox1.Text);
-
-            filesBox.Items.Clear();
-            FileInfo[] files;
-            List<string> listDirectories = logicControls.OutputDirectories(pathBox1.Text, out files);
-            foreach (string dir in listDirectories) { filesBox.Items.Add(dir); }
-
-
-            foreach (var file in files) { filesBox.Items.Add(file); }
+            handlerControl.PathBack(pathBox1, filesBox);
         }
 
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,7 +62,11 @@ namespace File_manager_prototype0._1
 
         private void filesBox_DoubleClick(object sender, EventArgs e)
         {
-
+            var path = filesBox.SelectedItem;
+            if (path.GetType().ToString() == "System.String")
+            {
+                handlerControl.SearchbyPath(filesBox, pathBox1);
+            }
         }
     }
 }
