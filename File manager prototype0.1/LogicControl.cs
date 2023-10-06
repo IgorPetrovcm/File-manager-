@@ -11,17 +11,15 @@ namespace File_manager_prototype0._1
     {
         LogicBtnSearchControls logicSearch = new LogicBtnSearchControls();
 
-        public List<string> OutputDirectories(string path, out FileInfo[] files)
+        public void OutputDirectory(string path, out FileInfo[] files,out DirectoryInfo[] directories)
         {
             path = logicSearch.ChekingTheCorrectnessPath(path);
             if (path != null)
             {
                 files = logicSearch.ListFiles(path);
-                List<string> directories = logicSearch.ListDirectories(path);
-
-                return directories;
+                directories = logicSearch.ListDirectories(path);
             }
-            else { files = null; return null; }
+            else { files = null; directories = null; }
         }
 
         protected class LogicBtnSearchControls
@@ -35,19 +33,11 @@ namespace File_manager_prototype0._1
                 }
                 else { return null; }
             }
-            public List<string> ListDirectories(string path)
+            public DirectoryInfo[] ListDirectories(string path)
             {
                 var dir = new DirectoryInfo(path);
                 DirectoryInfo[] dirArr = dir.GetDirectories();
-                List<string> dirsNames = new List<string>();
-                foreach (var name in dirArr)
-                {
-                    if ((name.Attributes & FileAttributes.Hidden) == 0)
-                    {
-                        dirsNames.Add(name.Name);
-                    }
-                }
-                return dirsNames;
+                return dirArr;
             }
             public FileInfo[] ListFiles(string path)
             {

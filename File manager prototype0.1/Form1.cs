@@ -24,13 +24,14 @@ namespace File_manager_prototype0._1
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<string> listDrivesName = logicControls.AddDrivesInLoadForm();
-            foreach (string name in listDrivesName) { cmbDrivesListBox.Items.Add(name); }
+            /*List<string> listDrivesName = logicControls.AddDrivesInLoadForm();
+            foreach (string name in listDrivesName) { cmbDrivesListBox.Items.Add(name); }*/
+            filesBox = handlerControl.OutputDrivesInAnyBox(filesBox);
         }
 
         private void btnSearchbyPath_Click(object sender, EventArgs e)
         {
-            filesBox = handlerControl.SearchbyPath(filesBox, pathBox1);
+            filesBox = handlerControl.OutputDirectoryInAnyBox(filesBox, pathBox1);
         }
 
         private void btnPathBack_Click(object sender, EventArgs e)
@@ -50,6 +51,13 @@ namespace File_manager_prototype0._1
             {
                 return;
             }
+            if (file is DriveInfo)
+            {
+                pathBox1.Text = filesBox.SelectedItem.ToString();
+                pathBox1.Text = logicControls.AddToPath(pathBox1.Text, filesBox.SelectedItem.ToString());
+
+                return;
+            }
             pathBox1.Text = logicControls.AddToPath(pathBox1.Text, filesBox.SelectedItem.ToString());
 
         }
@@ -63,9 +71,13 @@ namespace File_manager_prototype0._1
         private void filesBox_DoubleClick(object sender, EventArgs e)
         {
             var path = filesBox.SelectedItem;
-            if (path.GetType().ToString() == "System.String")
+            if (path.GetType().ToString() == "System.IO.DirectoryInfo")
             {
-                handlerControl.SearchbyPath(filesBox, pathBox1);
+                handlerControl.OutputDirectoryInAnyBox(filesBox, pathBox1);
+            }
+            if (path.GetType().ToString() == "System.IO.DriveInfo")
+            {
+                handlerControl.OutputDrivesInAnyBox(filesBox);
             }
         }
     }
