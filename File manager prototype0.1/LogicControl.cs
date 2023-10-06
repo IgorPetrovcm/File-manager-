@@ -11,7 +11,7 @@ namespace File_manager_prototype0._1
     {
         LogicBtnSearchControls logicSearch = new LogicBtnSearchControls();
 
-        public void OutputDirectory(string path, out FileInfo[] files,out DirectoryInfo[] directories)
+        public void OutputDirectory(string path, out FileInfo[] files, out DirectoryInfo[] directories)
         {
             path = logicSearch.ChekingTheCorrectnessPath(path);
             if (path != null)
@@ -107,7 +107,29 @@ namespace File_manager_prototype0._1
             public LogicFilesBox() { }
             public string AddToPath_OneClick(string path, string directory)
             {
+                if (path == "")
+                {
+                    path += directory;
+                    return path;
+                }
+                DriveInfo[] drives = DriveInfo.GetDrives();
+                foreach (DriveInfo drive in drives)
+                {
+                    if (path == drive.Name)
+                    {
+                        foreach (DriveInfo drive2 in drives)
+                        {
+                            if (directory == drive2.Name)
+                            {
+                                path = directory;
+                                return path;
+                            }
+                        }
+                    }
+                }
+
                 path += directory + @"\";
+
                 if (Directory.Exists(path) == false)
                 {
                     LogicBtnPathBack logicPathBack = new LogicBtnPathBack();
@@ -116,7 +138,7 @@ namespace File_manager_prototype0._1
 
                     return path;
                 }
-                else return path;
+                else { return path; }
 
             }
         }

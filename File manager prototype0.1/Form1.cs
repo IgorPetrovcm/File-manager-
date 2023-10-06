@@ -20,13 +20,10 @@ namespace File_manager_prototype0._1
         public Form1()
         {
             InitializeComponent();
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            /*List<string> listDrivesName = logicControls.AddDrivesInLoadForm();
-            foreach (string name in listDrivesName) { cmbDrivesListBox.Items.Add(name); }*/
-            filesBox = handlerControl.OutputDrivesInAnyBox(filesBox);
+
         }
 
         private void btnSearchbyPath_Click(object sender, EventArgs e)
@@ -47,30 +44,24 @@ namespace File_manager_prototype0._1
         private void filesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             var file = filesBox.SelectedItem;
+            if (file == null) { return; }
             if (file is FileInfo)
             {
                 return;
             }
-            if (file is DriveInfo)
-            {
-                pathBox1.Text = filesBox.SelectedItem.ToString();
-                pathBox1.Text = logicControls.AddToPath(pathBox1.Text, filesBox.SelectedItem.ToString());
 
-                return;
-            }
             pathBox1.Text = logicControls.AddToPath(pathBox1.Text, filesBox.SelectedItem.ToString());
 
         }
 
-        private void cmbDrivesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            pathBox1.Text = cmbDrivesListBox.Text;
-
-        }
 
         private void filesBox_DoubleClick(object sender, EventArgs e)
         {
             var path = filesBox.SelectedItem;
+            if (path == null)
+            {
+                return;
+            }
             if (path.GetType().ToString() == "System.IO.DirectoryInfo")
             {
                 handlerControl.OutputDirectoryInAnyBox(filesBox, pathBox1);
@@ -78,7 +69,18 @@ namespace File_manager_prototype0._1
             if (path.GetType().ToString() == "System.IO.DriveInfo")
             {
                 handlerControl.OutputDrivesInAnyBox(filesBox);
+                handlerControl.OutputDirectoryInAnyBox(filesBox, pathBox1);
+
             }
         }
+
+        private void filesBox_MouseEnter(object sender, EventArgs e)
+        {
+            if (filesBox.Items.Count == 0)
+            {
+                filesBox = handlerControl.OutputDrivesInAnyBox(filesBox);
+            }
+        }
+
     }
 }

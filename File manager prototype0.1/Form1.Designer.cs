@@ -33,13 +33,11 @@
             this.btnSearchbyPath = new System.Windows.Forms.Button();
             this.btnGoBack = new System.Windows.Forms.Button();
             this.btnPathBack = new System.Windows.Forms.Button();
-            this.cmbDrivesListBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // pathBox1
             // 
-            this.pathBox1.Location = new System.Drawing.Point(13, 49);
+            this.pathBox1.Location = new System.Drawing.Point(16, 28);
             this.pathBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pathBox1.Multiline = true;
             this.pathBox1.Name = "pathBox1";
@@ -58,11 +56,12 @@
             this.filesBox.TabIndex = 1;
             this.filesBox.SelectedIndexChanged += new System.EventHandler(this.filesBox_SelectedIndexChanged);
             this.filesBox.DoubleClick += new System.EventHandler(this.filesBox_DoubleClick);
+            this.filesBox.MouseEnter += new System.EventHandler(this.filesBox_MouseEnter);
             // 
             // btnSearchbyPath
             // 
             this.btnSearchbyPath.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchbyPath.Location = new System.Drawing.Point(16, 81);
+            this.btnSearchbyPath.Location = new System.Drawing.Point(16, 60);
             this.btnSearchbyPath.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearchbyPath.Name = "btnSearchbyPath";
             this.btnSearchbyPath.Size = new System.Drawing.Size(93, 27);
@@ -73,7 +72,7 @@
             // 
             // btnGoBack
             // 
-            this.btnGoBack.Location = new System.Drawing.Point(468, 80);
+            this.btnGoBack.Location = new System.Drawing.Point(468, 61);
             this.btnGoBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnGoBack.Name = "btnGoBack";
             this.btnGoBack.Size = new System.Drawing.Size(36, 27);
@@ -84,7 +83,7 @@
             // 
             // btnPathBack
             // 
-            this.btnPathBack.Location = new System.Drawing.Point(424, 80);
+            this.btnPathBack.Location = new System.Drawing.Point(424, 60);
             this.btnPathBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnPathBack.Name = "btnPathBack";
             this.btnPathBack.Size = new System.Drawing.Size(36, 28);
@@ -93,33 +92,11 @@
             this.btnPathBack.UseVisualStyleBackColor = true;
             this.btnPathBack.Click += new System.EventHandler(this.btnPathBack_Click);
             // 
-            // cmbDrivesListBox
-            // 
-            this.cmbDrivesListBox.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDrivesListBox.FormattingEnabled = true;
-            this.cmbDrivesListBox.Location = new System.Drawing.Point(13, 13);
-            this.cmbDrivesListBox.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbDrivesListBox.Name = "cmbDrivesListBox";
-            this.cmbDrivesListBox.Size = new System.Drawing.Size(57, 26);
-            this.cmbDrivesListBox.TabIndex = 10;
-            this.cmbDrivesListBox.SelectedIndexChanged += new System.EventHandler(this.cmbDrivesListBox_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(349, 236);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "label1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 350);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cmbDrivesListBox);
             this.Controls.Add(this.btnPathBack);
             this.Controls.Add(this.btnGoBack);
             this.Controls.Add(this.btnSearchbyPath);
@@ -141,8 +118,6 @@
         private System.Windows.Forms.Button btnSearchbyPath;
         private System.Windows.Forms.Button btnGoBack;
         private System.Windows.Forms.Button btnPathBack;
-        private System.Windows.Forms.ComboBox cmbDrivesListBox;
-        private System.Windows.Forms.Label label1;
     }
 }
 
